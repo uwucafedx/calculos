@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Calculadora UwU Café</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #999;
+        }
+        button {
+            width: 48%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #calcularBtn {
+            background: #d78bff;
+        }
+        #limpiarBtn {
+            background: #ffb6c1;
+        }
+        .fila-botones {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Combos</h2>
+
+        <label>Cantidad de combos:</label>
+        <input type="number" id="combos" value="0" />
+
+        <label>Precio por combo:</label>
+        <input type="number" id="precio" value="30" />
+
+        <label>Total:</label>
+        <input type="text" id="total" value="0" readonly />
+
+        <div class="fila-botones">
+            <button id="calcularBtn">Calcular</button>
+            <button id="limpiarBtn">Limpiar</button>
+        </div>
+    </div>
+
+    <script>
+        const combos = document.getElementById("combos");
+        const precio = document.getElementById("precio");
+        const total = document.getElementById("total");
+        const calcularBtn = document.getElementById("calcularBtn");
+        const limpiarBtn = document.getElementById("limpiarBtn");
+
+        calcularBtn.addEventListener("click", () => {
+            const c = Number(combos.value);
+            const p = Number(precio.value);
+            total.value = (c * p).toFixed(2);
+        });
+
+        limpiarBtn.addEventListener("click", () => {
+            combos.value = 0;
+            precio.value = 0;
+            total.value = 0;
+        });
+    </script>
+</body>
+</html>
