@@ -1,89 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Calculadora UwU Café</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-            padding: 20px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            background: #fff;
-            color: #000;
-            padding: 20px;
-            border-radius: 12px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border: 1px solid #999;
-        }
-        button {
-            width: 48%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            margin-top: 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        #calcularBtn {
-            background: #d78bff;
-        }
-        #limpiarBtn {
-            background: #ffb6c1;
-        }
-        .fila-botones {
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+<meta charset="UTF-8" />
+<title>Listado de Productos</title>
+<style>
+  body{
+    margin:0;
+    background:#1a1326;
+    font-family: Arial, sans-serif;
+    padding:30px;
+    color:white;
+  }
+
+  .container{
+    max-width:1000px;
+    margin:auto;
+    background:rgba(200,150,255,0.18);
+    padding:15px;
+    border-radius:14px;
+    backdrop-filter: blur(6px);
+    box-shadow:0 0 18px rgba(0,0,0,0.4);
+  }
+
+  h2{
+    margin-top:0;
+    text-align:left;
+    font-size:26px;
+    margin-bottom:15px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:15px;
+    line-height:1.1; /* compactado */
+  }
+
+  th, td{
+    padding:4px 6px; /* mucho más compacto */
+    border:1px solid rgba(255,255,255,0.12);
+    color:white;
+  }
+
+  th{
+    background:rgba(255,255,255,0.05);
+  }
+
+  input.qty{
+    width:55px;
+    height:24px;
+    padding:2px 4px;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:6px;
+    color:white;
+    text-align:center;
+  }
+
+  button{
+    margin-top:12px;
+    padding:8px 16px;
+    font-size:15px;
+    border:none;
+    border-radius:8px;
+    background:#a96cff;
+    color:white;
+    cursor:pointer;
+  }
+
+  button:hover{
+    background:#c08aff;
+  }
+
+  #clearBtn{
+    background:#ff4f70;
+    margin-left:10px;
+  }
+  #clearBtn:hover{
+    background:#ff6b88;
+  }
+
+  /* Colores por filas */
+  .c1{background:rgba(173,216,230,0.22);}
+  .c2{background:rgba(216,191,216,0.22);}
+  .c3{background:rgba(152,251,152,0.22);}
+  .c4{background:rgba(255,255,102,0.22);}
+  .c5{background:rgba(255,182,193,0.22);}
+  .c6{background:rgba(216,191,216,0.22);}
+  .c7{background:rgba(255,182,193,0.22);}
+
+  .right{text-align:right}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h2>Calculadora de Combos</h2>
 
-        <label>Cantidad de combos:</label>
-        <input type="number" id="combos" value="0" />
+<div class="container">
+<h2>Listado de Productos</h2>
 
-        <label>Precio por combo:</label>
-        <input type="number" id="precio" value="30" />
+<table>
+  <thead>
+    <tr>
+      <th>Precio Unitario</th>
+      <th>Producto/Servicio</th>
+      <th>Cantidad</th>
+      <th class="right">Subtotal</th>
+    </tr>
+  </thead>
 
-        <label>Total:</label>
-        <input type="text" id="total" value="0" readonly />
+  <tbody>
+    <tr class="c1"><td data-price="50" class="right">50</td><td>Capot</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c1"><td data-price="60" class="right">60</td><td>Chapas metálicas</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c1"><td data-price="250" class="right">250</td><td>Disco de embrague</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c1"><td data-price="250" class="right">250</td><td>Eje de transmisión</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c1"><td data-price="250" class="right">250</td><td>Filtro de combustible</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
 
-        <div class="fila-botones">
-            <button id="calcularBtn">Calcular</button>
-            <button id="limpiarBtn">Limpiar</button>
-        </div>
-    </div>
+    <tr class="c2"><td data-price="600" class="right">600</td><td>Ganzúa</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c2"><td data-price="700" class="right">700</td><td>Ganzúa avanzada</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c2"><td data-price="180" class="right">180</td><td>Gato para coche</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
 
-    <script>
-        const combos = document.getElementById("combos");
-        const precio = document.getElementById("precio");
-        const total = document.getElementById("total");
-        const calcularBtn = document.getElementById("calcularBtn");
-        const limpiarBtn = document.getElementById("limpiarBtn");
+    <tr class="c3"><td data-price="350" class="right">350</td><td>Kit de reparación</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c3"><td data-price="700" class="right">700</td><td>Kit avanzado</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c3"><td data-price="50" class="right">50</td><td>Maletero</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c3"><td data-price="50" class="right">50</td><td>Motor</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
 
-        calcularBtn.addEventListener("click", () => {
-            const c = Number(combos.value);
-            const p = Number(precio.value);
-            total.value = (c * p).toFixed(2);
-        });
+    <tr class="c4"><td data-price="350" class="right">350</td><td>Neumático Drift</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c4"><td data-price="50" class="right">50</td><td>Neumático normal</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
 
-        limpiarBtn.addEventListener("click", () => {
-            combos.value = 0;
-            precio.value = 0;
-            total.value = 0;
-        });
-    </script>
+    <tr class="c5"><td data-price="100" class="right">100</td><td>Paño microfibra</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+
+    <tr class="c1"><td data-price="250" class="right">250</td><td>Pastillas de freno</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c1"><td data-price="50" class="right">50</td><td>Puerta</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c1"><td data-price="250" class="right">250</td><td>Radiador</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+
+    <tr class="c6"><td data-price="240" class="right">240</td><td>Reparación básica</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+    <tr class="c7"><td data-price="1500" class="right">1500</td><td>Reparación completa</td><td><input class="qty" type="number" min="0" value="0"></td><td class="subtotal right">0</td></tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th colspan="3">TOTAL</th>
+      <th id="total" class="right">0</th>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="controls">
+  <button id="calcBtn">Calcular TOTAL</button>
+  <button id="clearBtn">Limpiar</button>
+</div>
+</div>
+
+<script>
+// helper
+function toNumber(v){
+  const n = parseFloat(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function recalcularSubtotal(row){
+  const price = toNumber(row.querySelector('td[data-price]').dataset.price);
+  const qty = toNumber(row.querySelector('.qty').value);
+  const subtotal = price * qty;
+  row.querySelector('.subtotal').textContent = subtotal.toLocaleString();
+  return subtotal;
+}
+
+function sumarTotal(){
+  let total = 0;
+  document.querySelectorAll('tbody tr').forEach(row =>{
+    total += recalcularSubtotal(row);
+  });
+  document.getElementById('total').textContent = total.toLocaleString();
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.qty').forEach(i =>{
+    i.addEventListener('input', sumarTotal);
+  });
+
+  document.getElementById('calcBtn').addEventListener('click', sumarTotal);
+
+  document.getElementById('clearBtn').addEventListener('click', ()=>{
+    document.querySelectorAll('.qty').forEach(i=> i.value = 0);
+    sumarTotal();
+  });
+
+  sumarTotal();
+});
+</script>
+
 </body>
 </html>
