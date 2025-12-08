@@ -3,168 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <title>Listado de Productos</title>
+
 <style>
     body {
-        background: #1c1629;
+        background: #1a1025;
         font-family: Arial, sans-serif;
-        margin: 0;
         padding: 20px;
         color: white;
     }
 
+    .contenedor {
+        background: #2b1e3b;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
     h1 {
-        margin-bottom: 10px;
+        margin-top: 0;
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 13px; /* Texto más compacto */
-    }
-
-    th, td {
-        padding: 4px 8px; /* Menos padding → tabla más compacta */
-        text-align: center;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    th {
-        background: rgba(255,255,255,0.08);
+        color: white;
         font-size: 14px;
     }
 
-    tr:nth-child(odd) { background: rgba(255,255,255,0.05); }
-    tr:nth-child(even) { background: rgba(255,255,255,0.08); }
+    th {
+        background: #3b2a52;
+        padding: 8px;
+        text-align: left;
+    }
 
-    /* Colores por secciones */
-    .c1 { background: rgba(90,110,130,0.35); }
-    .c2 { background: rgba(140,90,140,0.35); }
-    .c3 { background: rgba(80,110,90,0.35); }
-    .c4 { background: rgba(140,120,70,0.35); }
-    .c5 { background: rgba(150,70,100,0.35); }
+    td {
+        padding: 6px;
+        border-bottom: 1px solid #4e3a63;
+    }
+
+    tr:nth-child(even) {
+        background: #342549;
+    }
 
     input[type="number"] {
-        width: 55px; /* más chico */
-        padding: 3px;
-        border-radius: 6px;
-        border: 1px solid #999;
-        text-align: center;
-        font-size: 13px;
-        background: rgba(255,255,255,0.15);
-        color: rgb(220,220,220);
-    }
-
-    #totalFinal {
-        font-size: 18px;
-        margin-top: 10px;
-        font-weight: bold;
-    }
-
-    .botones {
-        margin-top: 15px;
-        display: flex;
-        gap: 15px;
-    }
-
-    button {
-        padding: 8px 18px;
+        width: 60px;           /* COLUMNAS ANGOSTAS */
+        padding: 4px;
+        border-radius: 5px;
         border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 15px;
-    }
-
-    .calcular {
-        background: #9966ff;
+        background: #4e3a63;
         color: white;
+        text-align: center;
     }
 
-    .limpiar {
-        background: #ff9999;
-        color: black;
-    }
+    /* Columnas angostas */
+    .precio { width: 80px; }
+    .cantidadCol { width: 80px; }
+    .subtotal { width: 80px; }
 
+    #totalContainer {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: right;
+    }
 </style>
 </head>
+
 <body>
 
-<h1>Listado de Productos</h1>
+<div class="contenedor">
+    <h1>Listado de Productos</h1>
 
-<table id="tablaProductos">
-    <tr>
-        <th>Precio Unitario</th>
-        <th>Producto/Servicio</th>
-        <th>Cantidad</th>
-        <th>Subtotal</th>
-    </tr>
+    <table>
+        <thead>
+            <tr>
+                <th class="precio">Precio</th>
+                <th>Producto/Servicio</th>
+                <th class="cantidadCol">Cantidad</th>
+                <th class="subtotal">Subtotal</th>
+            </tr>
+        </thead>
 
-    <!-- Productos compactados con color por sección -->
+        <tbody>
 
-    <tr class="c1"><td>50</td><td>Capot</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c1"><td>60</td><td>Chapas metálicas</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c1"><td>250</td><td>Disco de embrague</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c1"><td>250</td><td>Eje de transmisión</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c1"><td>250</td><td>Filtro de combustible</td><td><input type="number" min="0"></td><td>0</td></tr>
+            <!-- Ejemplo de FILA (todas iguales, solo cambia precio y nombre) -->
+            <tr>
+                <td class="precio">50</td>
+                <td>Capot</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
 
-    <tr class="c2"><td>600</td><td>Ganzúa</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c2"><td>700</td><td>Ganzúa avanzada</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c2"><td>180</td><td>Gato para coche</td><td><input type="number" min="0"></td><td>0</td></tr>
+            <tr>
+                <td class="precio">60</td>
+                <td>Chapas metálicas</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
 
-    <tr class="c3"><td>350</td><td>Kit de reparación</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c3"><td>700</td><td>Kit avanzado</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c3"><td>50</td><td>Maletero</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c3"><td>50</td><td>Motor</td><td><input type="number" min="0"></td><td>0</td></tr>
+            <tr>
+                <td class="precio">250</td>
+                <td>Disco de embrague</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
 
-    <tr class="c4"><td>350</td><td>Neumático Drift</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c4"><td>50</td><td>Neumático normal</td><td><input type="number" min="0"></td><td>0</td></tr>
+            <tr>
+                <td class="precio">250</td>
+                <td>Eje de transmisión</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
 
-    <tr class="c5"><td>100</td><td>Paño microfibra</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c5"><td>250</td><td>Pastillas de freno</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c5"><td>50</td><td>Puerta</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c5"><td>250</td><td>Radiador</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c5"><td>240</td><td>Reparación básica</td><td><input type="number" min="0"></td><td>0</td></tr>
-    <tr class="c5"><td>1500</td><td>Reparación completa</td><td><input type="number" min="0"></td><td>0</td></tr>
+            <tr>
+                <td class="precio">250</td>
+                <td>Filtro de combustible</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
 
-</table>
+            <tr>
+                <td class="precio">600</td>
+                <td>Ganzúa</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
 
-<div class="botones">
-    <button class="calcular" onclick="calcularTotal()">Calcular Total</button>
-    <button class="limpiar" onclick="limpiarTodo()">Limpiar</button>
+            <tr>
+                <td class="precio">700</td>
+                <td>Ganzúa avanzada</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">180</td>
+                <td>Gato para coche</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">350</td>
+                <td>Kit de reparación</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">700</td>
+                <td>Kit avanzado</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">50</td>
+                <td>Maletero</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">50</td>
+                <td>Motor</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">350</td>
+                <td>Neumático Drift</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">50</td>
+                <td>Neumático normal</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">100</td>
+                <td>Paño microfibra</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <tr>
+                <td class="precio">250</td>
+                <td>Pastillas de freno</td>
+                <td><input type="number" class="cantidadInput" value="0"></td>
+                <td class="subtotal">0</td>
+            </tr>
+
+            <!-- Puedes seguir agregando más acá... -->
+
+        </tbody>
+    </table>
+
+    <div id="totalContainer">
+        Total General: <span id="totalGeneral">0</span>
+    </div>
+
 </div>
 
-<div id="totalFinal">Total: 0</div>
-
 <script>
-function calcularTotal() {
-    let tabla = document.querySelectorAll("#tablaProductos tr");
-    let total = 0;
+document.addEventListener("DOMContentLoaded", () => {
+    const rows = document.querySelectorAll("tbody tr");
+    const totalGeneral = document.getElementById("totalGeneral");
 
-    tabla.forEach((fila, i) => {
-        if (i === 0) return;
+    function actualizarTotal() {
+        let sumaTotal = 0;
 
-        let precio = parseFloat(fila.children[0].textContent);
-        let cantidad = parseFloat(fila.children[2].children[0].value) || 0;
-        let subtotal = precio * cantidad;
+        rows.forEach(row => {
+            const precio = parseFloat(row.querySelector(".precio").textContent) || 0;
+            const inputCantidad = row.querySelector(".cantidadInput");
+            const subtotalCell = row.querySelector(".subtotal");
 
-        fila.children[3].textContent = subtotal;
-        total += subtotal;
+            const cantidad = parseInt(inputCantidad.value) || 0;
+            const subtotal = precio * cantidad;
+
+            subtotalCell.textContent = subtotal;
+
+            sumaTotal += subtotal;
+        });
+
+        totalGeneral.textContent = sumaTotal;
+    }
+
+    rows.forEach(row => {
+        const inputCantidad = row.querySelector(".cantidadInput");
+        inputCantidad.addEventListener("input", actualizarTotal);
     });
-
-    document.getElementById("totalFinal").textContent = "Total: " + total;
-}
-
-function limpiarTodo() {
-    let tabla = document.querySelectorAll("#tablaProductos tr");
-
-    tabla.forEach((fila, i) => {
-        if (i === 0) return;
-
-        fila.children[2].children[0].value = 0;
-        fila.children[3].textContent = 0;
-    });
-
-    document.getElementById("totalFinal").textContent = "Total: 0";
-}
+});
 </script>
 
 </body>
